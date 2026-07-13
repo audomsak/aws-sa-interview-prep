@@ -41,20 +41,11 @@ No manual `gh-pages` branch management needed — the workflow handles build and
 ├── .github/workflows/deploy.yml # CI/CD to GitHub Pages
 └── docs/
     ├── index.md                 # course home page / roadmap
-    ├── day1/                    # Linux, Containers, Kubernetes & OpenShift
-    │   ├── index.md
-    │   ├── 01-linux-networking.md
-    │   ├── 02-container-from-scratch.md
-    │   ├── 03-cgroups-namespaces.md
-    │   ├── 04-docker-vs-podman.md
-    │   ├── 05-container-networking.md
-    │   ├── 06-kubernetes-the-hard-way.md
-    │   ├── 07-kubernetes-cri.md
-    │   ├── 08-cni.md
-    │   ├── 09-csi.md
-    │   ├── 10-openshift-architecture.md
-    │   ├── 11-openshift-onprem-deployment.md
-    │   ├── 12-openshift-scc-operators-routes.md
-    │   └── 13-interview-qa.md
-    ├── day2/  ... day7/          # placeholders, to be filled in day by day (also being reshaped for 10-hour days)
+    ├── day1/                    # Linux, Containers, Kubernetes & OpenShift (13 pages + index)
+    ├── day2/                    # Apache Camel & Enterprise Integration Patterns (11 pages + index)
+    ├── day3/                    # API Management & Gateway Architecture (12 pages + index)
+    ├── day4/                    # Messaging & Event-Driven Architecture (11 pages + index)
+    ├── day5/                    # Microservices & Distributed Systems Resilience (12 pages + index)
+    ├── day6/                    # AWS Core Architecture for Solutions Architects (13 pages + index)
+    └── day7/                    # DevOps/DevSecOps & Full Review (11 pages + index)
 ```

@@ -144,6 +144,3 @@ nav:
       - "9. DevSecOps — shift-left security pipeline": day7/09-devsecops-shift-left-security.md
       - "10. Safe deployment patterns": day7/10-safe-deployment-patterns.md
       - "11. Full 7-day cross-topic mock interview & review": day7/11-full-mock-interview-review.md
-
-extra_javascript:
-  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
