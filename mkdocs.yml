@@ -1,0 +1,149 @@
+site_name: AWS Solutions Architect — Interview Crash Course
+site_description: 7-day, level-8-depth technical drilling course for the AWS Solutions Architect functional interview
+site_author: Audomsak Suksunti
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - toc.integrate
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+  - attr_list
+  - md_in_html
+
+nav:
+  - Home: index.md
+  - "Day 1 — Linux, Containers, Kubernetes & OpenShift":
+      - Overview: day1/index.md
+      - "1. Linux networking fundamentals": day1/01-linux-networking.md
+      - "2. Building a container from scratch": day1/02-container-from-scratch.md
+      - "3. cgroups and namespaces": day1/03-cgroups-namespaces.md
+      - "4. Docker vs Podman architecture": day1/04-docker-vs-podman.md
+      - "5. Container networking deep dive": day1/05-container-networking.md
+      - "6. Kubernetes cluster setup the hard way": day1/06-kubernetes-the-hard-way.md
+      - "7. Kubernetes architecture & CRI": day1/07-kubernetes-cri.md
+      - "8. Networking — CNI deep dive": day1/08-cni.md
+      - "9. Storage — CSI deep dive": day1/09-csi.md
+      - "10. OpenShift architecture": day1/10-openshift-architecture.md
+      - "11. OpenShift on-premises deployment": day1/11-openshift-onprem-deployment.md
+      - "12. OpenShift specifics — SCC, Operators, Routes": day1/12-openshift-scc-operators-routes.md
+      - "13. Interview Q&A drill": day1/13-interview-qa.md
+  - "Day 2 — Apache Camel & Enterprise Integration Patterns":
+      - Overview: day2/index.md
+      - "1. Integration architecture fundamentals": day2/01-integration-fundamentals.md
+      - "2. Camel core architecture": day2/02-camel-core-architecture.md
+      - "3. Camel vs MuleSoft vs Spring Integration vs ESB": day2/03-camel-vs-alternatives.md
+      - "4. The EIP catalog, deeply": day2/04-eip-catalog.md
+      - "5. Error handling & transactions": day2/05-error-handling-transactions.md
+      - "6. Reliability & exactly-once delivery": day2/06-reliability-exactly-once.md
+      - "7. Performance & scalability": day2/07-performance-scalability.md
+      - "8. Testing Camel routes": day2/08-testing-camel-routes.md
+      - "9. Camel K / Quarkus / cloud-native Camel": day2/09-camel-k-quarkus-cloud-native.md
+      - "10. B2B & legacy integration standards": day2/10-b2b-legacy-integration.md
+      - "11. Interview Q&A drill": day2/11-interview-qa.md
+  - "Day 3 — API Management & Gateway Architecture":
+      - Overview: day3/index.md
+      - "1. The API Gateway pattern & why it exists": day3/01-api-gateway-pattern-fundamentals.md
+      - "2. OpenAPI-first / contract-first API design": day3/02-openapi-contract-first-design.md
+      - "3. Kong architecture deep dive": day3/03-kong-architecture-deep-dive.md
+      - "4. Kong plugins & declarative config": day3/04-kong-plugins-declarative-config.md
+      - "5. Rate limiting algorithms": day3/05-rate-limiting-algorithms.md
+      - "6. OAuth2 & OIDC deep dive": day3/06-oauth2-oidc-deep-dive.md
+      - "7. mTLS & service-to-service security": day3/07-mtls-service-to-service-security.md
+      - "8. API Gateway vs Service Mesh": day3/08-api-gateway-vs-service-mesh.md
+      - "9. AI Gateways": day3/09-ai-gateways.md
+      - "10. API versioning strategies": day3/10-api-versioning-strategies.md
+      - "11. Kong vs 3scale (and the wider landscape)": day3/11-kong-vs-3scale-competitive-landscape.md
+      - "12. Interview Q&A drill": day3/12-interview-qa.md
+  - "Day 4 — Messaging & Event-Driven Architecture":
+      - Overview: day4/index.md
+      - "1. Kafka internals deep dive": day4/01-kafka-internals.md
+      - "2. Kafka stream processing fundamentals": day4/02-kafka-stream-processing.md
+      - "3. Kafka geo-replication & multi-datacenter DR": day4/03-kafka-geo-replication-dr.md
+      - "4. ActiveMQ/IBM MQ vs Kafka": day4/04-activemq-ibmmq-vs-kafka.md
+      - "5. Dead Letter Queue & poison-pill patterns": day4/05-dlq-poison-pill-patterns.md
+      - "6. Change Data Capture (CDC) deep dive": day4/06-change-data-capture.md
+      - "7. The Outbox pattern, fully realized": day4/07-outbox-pattern-realized.md
+      - "8. The Saga pattern, full treatment": day4/08-saga-pattern-full-treatment.md
+      - "9. Choreography vs Orchestration": day4/09-choreography-vs-orchestration.md
+      - "10. Event Sourcing vs CDC": day4/10-event-sourcing-vs-cdc.md
+      - "11. Interview Q&A drill": day4/11-interview-qa.md
+  - "Day 5 — Microservices & Distributed Systems Resilience":
+      - Overview: day5/index.md
+      - "1. CAP theorem & data consistency patterns": day5/01-cap-theorem-data-consistency.md
+      - "2. Consensus algorithms — Raft/Paxos": day5/02-consensus-algorithms-raft-paxos.md
+      - "3. Circuit breaker pattern deep dive": day5/03-circuit-breaker-deep-dive.md
+      - "4. Bulkhead, timeout & retry patterns": day5/04-bulkhead-timeout-retry.md
+      - "5. Load shedding & backpressure": day5/05-load-shedding-backpressure.md
+      - "6. Fallback & graceful degradation": day5/06-fallback-graceful-degradation.md
+      - "7. Chaos Engineering": day5/07-chaos-engineering.md
+      - "8. CQRS, full treatment": day5/08-cqrs-full-treatment.md
+      - "9. Event Sourcing, full treatment": day5/09-event-sourcing-full-treatment.md
+      - "10. Distributed tracing & OpenTelemetry": day5/10-distributed-tracing-opentelemetry.md
+      - "11. Service mesh resilience patterns": day5/11-service-mesh-resilience.md
+      - "12. Interview Q&A drill": day5/12-interview-qa.md
+  - "Day 6 — AWS Core Architecture for Solutions Architects":
+      - Overview: day6/index.md
+      - "1. VPC networking deep dive": day6/01-vpc-networking-deep-dive.md
+      - "2. IAM & identity architecture": day6/02-iam-identity-architecture.md
+      - "3. EC2 & compute purchasing options": day6/03-ec2-compute-purchasing-options.md
+      - "4. Containers on AWS — ECS vs EKS vs Fargate": day6/04-containers-on-aws.md
+      - "5. Lambda & serverless architecture": day6/05-lambda-serverless-architecture.md
+      - "6. S3 deep dive": day6/06-s3-deep-dive.md
+      - "7. RDS/Aurora & database architecture": day6/07-rds-aurora-database-architecture.md
+      - "8. Well-Architected Framework, all 6 pillars": day6/08-well-architected-framework.md
+      - "9. High availability & multi-region/DR design": day6/09-ha-multi-region-dr.md
+      - "10. The 6 R's of migration": day6/10-six-rs-migration.md
+      - "11. Cost optimization strategies": day6/11-cost-optimization.md
+      - "12. Shared Responsibility Model & security": day6/12-shared-responsibility-security.md
+      - "13. Interview Q&A drill": day6/13-interview-qa.md
+  - "Day 7 — DevOps/DevSecOps & Full Review":
+      - Overview: day7/index.md
+      - "1. Repository & branching workflow strategies": day7/01-repo-branching-workflow-strategies.md
+      - "2. CI/CD pipeline architecture & artifact promotion": day7/02-cicd-pipeline-architecture.md
+      - "3. GitOps deep dive — push vs pull": day7/03-gitops-push-vs-pull.md
+      - "4. IaC — Terraform vs Ansible": day7/04-iac-terraform-vs-ansible.md
+      - "5. Ansible idempotency & dynamic inventory": day7/05-ansible-idempotency-inventory.md
+      - "6. Helm — when it helps, when it hurts": day7/06-helm-when-it-helps-hurts.md
+      - "7. Observability stack architecture": day7/07-observability-stack-architecture.md
+      - "8. SLI/SLO & SRE fundamentals": day7/08-sli-slo-sre-fundamentals.md
+      - "9. DevSecOps — shift-left security pipeline": day7/09-devsecops-shift-left-security.md
+      - "10. Safe deployment patterns": day7/10-safe-deployment-patterns.md
+      - "11. Full 7-day cross-topic mock interview & review": day7/11-full-mock-interview-review.md
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
