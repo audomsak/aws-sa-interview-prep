@@ -183,3 +183,59 @@
 
 > **Hook: "CloudTrail for the log, GuardDuty for the alert, Access Analyzer for the review, then rotate and investigate at scale with Athena."**
 > CloudTrail provides the API activity log to investigate; a CloudWatch alarm, often fed by a GuardDuty finding, surfaces the suspicious activity; IAM Access Analyzer reviews external or cross-account access for anything unexpectedly broad. On confirming a real incident, rotate the affected credentials, revoke active sessions, and use Athena to run SQL queries directly against CloudTrail logs at scale for a full investigation — a specific, operational response, not a vague "we'd investigate and respond."
+
+---
+
+**27. When would you choose DynamoDB over RDS, and what's the one question you'd ask the requirements first?**
+
+> **Hook: "Do we know every query today? Yes at scale → DynamoDB. No, or joins and reporting → relational."**
+> DynamoDB fits workloads with a complete, known set of access patterns needing flat single-digit-millisecond latency at scale with a serverless operational model; relational fits ad-hoc queries, joins, aggregations, and domains whose future queries are unknown. The reason it hinges on that one question: DynamoDB has no joins, so the table design must be derived from the access patterns up front — schemaless describes the items, not the discipline. And for analytics, the answer is neither directly: export to S3 and query with Athena.
+
+---
+
+**28. What is a hot partition in DynamoDB, and does adaptive capacity solve it?**
+
+> **Hook: "Adaptive capacity sends staff to help lane 3 — it still can't make one checkout lane serve the whole store."**
+> The partition key is hashed to a physical partition, and each partition has a fixed throughput ceiling — so a low-cardinality or skewed key (today's date, one huge tenant) concentrates traffic on one partition that throttles while the table has idle capacity elsewhere. Adaptive capacity shifts unused throughput toward hot partitions and genuinely softens moderate skew, but it can't repeal the per-partition ceiling — a fundamentally skewed key design stays broken. The real fix is key design: high-cardinality partition keys or write sharding with a random suffix.
+
+---
+
+**29. GSI vs LSI — differences, and which do you actually reach for?**
+
+> **Hook: "A GSI is a second table with a different key that DynamoDB maintains for you; an LSI is just a second sort order inside the same partition."**
+> A GSI has a completely different partition and sort key, can be added any time, carries its own capacity, and is eventually consistent only. An LSI shares the table's partition key with a different sort key, supports strongly consistent reads, but must be created with the table and caps each item collection at 10 GB. In practice the GSI is the default reach — the LSI's creation-time lock-in and size cap make it the rare, deliberate choice.
+
+---
+
+**30. Your service needs multi-region active-active writes. Compare DynamoDB Global Tables with Aurora Global Database.**
+
+> **Hook: "Global Tables let every region write and resolve conflicts last-writer-wins; Aurora Global Database has one writer region and fast promotion of the rest."**
+> DynamoDB Global Tables replicate active-active — every region accepts writes, with last-writer-wins conflict resolution, so the application must tolerate that resolution semantics. Aurora Global Database is single-writer: one primary region takes writes, secondaries serve low-latency local reads with sub-second lag and can be promoted in minutes during a regional outage — active-passive for writes. So the honest answer starts from the data model and conflict tolerance, not the replication brochure: key-value with tolerable last-writer-wins → Global Tables; relational integrity → Aurora Global Database plus a failover story.
+
+---
+
+**31. ALB vs NLB — how do you choose, and what's the tell in the requirements?**
+
+> **Hook: "ALB reads the request; NLB just forwards the connection."**
+> The moment the requirement mentions routing by URL path, host, or header — or attaching a WAF, or authenticating at the balancer — that's layer-7 work and an ALB. The moment it says static IPs, preserved source IPs, non-HTTP protocols, or extreme throughput/latency, that's layer-4 plumbing and an NLB — which is also what PrivateLink endpoints are built on. They compose too: an NLB for fixed ingress IPs can sit in front of layer-7 machinery behind it.
+
+---
+
+**32. Walk me through Route 53's routing policies and when each earns its place.**
+
+> **Hook: "Weighted for canaries, latency for active-active, failover for DR, geolocation for compliance — and DNS is the slowest failover layer you own."**
+> Simple is one answer; weighted splits traffic by percentage (canary releases and gradual migrations); latency-based answers with the fastest region for each user (multi-region active-active); failover serves a primary while its health check passes and a secondary when it doesn't (active-passive DR); geolocation routes on where the user is (data residency); multivalue returns several health-checked answers. The senior caveat to volunteer: resolver-cached TTLs mean a DNS failover takes minutes to fully propagate, not milliseconds — which is exactly the gap Global Accelerator exists to close.
+
+---
+
+**33. CloudFront vs Global Accelerator — both are "edge" services, so what's the actual difference?**
+
+> **Hook: "CloudFront is a warehouse network; Global Accelerator is a private highway — one stores copies, the other just skips the public roads."**
+> CloudFront is a CDN: it caches HTTP content at edge locations, so it fits websites, static assets, and APIs with cacheable responses — and even dynamic requests benefit from edge TLS termination and warm backbone connections. Global Accelerator caches nothing: it gives you two static anycast IPs that ingress traffic at the nearest edge and carry any TCP/UDP protocol over the AWS backbone, with near-instant regional failover that involves no DNS TTL wait. Cacheable HTTP → CloudFront; non-HTTP protocols, fixed-IP allowlisting, or fast multi-region failover → Global Accelerator.
+
+---
+
+**34. A customer says "I don't need an API gateway — I already have an ALB." How do you respond?**
+
+> **Hook: "The ALB balances and routes; the gateway governs."**
+> An ALB does layer-7 routing, health checks, and TLS termination — traffic distribution. An API gateway adds the management plane on top: per-consumer authentication and authorization, rate limiting, request/response transformation, versioning, and policy as configuration — the whole Day 3 catalog. They compose rather than compete: CloudFront → load balancer → gateway → services is a normal production stack with each layer doing one job, and the honest framing is that if none of those governance needs exist yet, the ALB alone is genuinely fine — the gateway earns its place when APIs become products with consumers to manage.

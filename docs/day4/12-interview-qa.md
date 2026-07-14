@@ -169,3 +169,31 @@
 
 > **Hook: "If you deleted the event stream, would you lose your data, or just a convenient copy of it?"**
 > In Event Sourcing, the sequence of events IS the primary source of truth — current state is derived by replaying or folding events, and deleting the event stream would mean losing everything. In CDC, a conventional database remains the source of truth, and the event stream is a derived, secondary side effect of ordinary writes — deleting it would lose a convenient copy, not the actual data. CDC combined with the outbox pattern is usually the more pragmatic choice for teams with existing conventional CRUD services, since it doesn't require the upfront event-first redesign full Event Sourcing demands.
+
+---
+
+**25. You clearly know Kafka. On AWS, when would you pick SQS over Kinesis or MSK?**
+
+> **Hook: "Name the semantics first — queue, fan-out, router, or log — and the AWS service names itself."**
+> If the requirement is a durable work queue with competing consumers and no need to re-read history, that's queue semantics — SQS, and reaching for a retained log there is over-engineering. If the requirement is a high-throughput ordered stream that multiple independent readers consume and can replay, that's log semantics — Kinesis or MSK. Fan-out to several independent consumers is SNS (usually SNS→SQS), and content-based routing across many targets or SaaS/cross-account integration is EventBridge. Stating the semantics before the service name is exactly what separates a considered answer from a brochure answer.
+
+---
+
+**26. How does SQS handle a consumer that crashes mid-processing, and how does that compare to Kafka's model?**
+
+> **Hook: "SQS's visibility timeout is a lease, not an ack."**
+> On receive, the message becomes invisible to other consumers for the visibility timeout; if the consumer deletes it in time, it's gone — a destructive read, like a JMS queue — and if the consumer goes silent, the message reappears for redelivery, with a redrive policy moving it to a DLQ after `maxReceiveCount` attempts. Kafka has no per-message lease at all: a consumer just advances its group's offset, and a crash means the group rebalances and the next consumer resumes from the last committed offset. Both deliver at-least-once, so idempotent consumers are required either way — but SQS tracks each message individually while Kafka tracks only a cursor.
+
+---
+
+**27. How would you get Kafka's "one topic, many consumer groups" behavior from serverless AWS services?**
+
+> **Hook: "SNS plus one SQS queue per consumer = consumer groups assembled from Lego."**
+> Publish the event once to an SNS topic and subscribe one SQS queue per downstream consumer — each queue is that consumer's own durable buffer, drained independently at its own pace, exactly the role a consumer group's offset plays in Kafka. Subscription filter policies even give per-consumer content filtering. The honest gap to volunteer: there's no replay — SQS is a destructive read, so a new consumer added later starts from now, whereas a new Kafka consumer group can rewind the whole retained log.
+
+---
+
+**28. Kinesis vs MSK — same log semantics, so how do you actually choose?**
+
+> **Hook: "MSK when the Kafka ecosystem is the point; Kinesis when not running Kafka is the point."**
+> MSK is literally managed Kafka, so existing producer/consumer code, Kafka Streams applications, and above all Kafka Connect pipelines — including Debezium, which means the whole CDC/outbox architecture from today — carry over unchanged. Kinesis wins on the operations story: serverless scaling, IAM-native auth, no broker or partition management, with a near one-to-one concept mapping (shard≈partition, sequence number≈offset, KCL application≈consumer group). So the decision is mostly about what you're carrying: an existing Kafka estate or ecosystem dependency says MSK; a greenfield AWS-only build with no Kafka operational experience says Kinesis.

@@ -44,7 +44,7 @@ They're **not mutually exclusive** — a well-architected production database co
 | **Fits** | Complex queries, joins, multi-table transactions, a well-understood, relatively stable schema | Extremely high scale, single-digit-millisecond latency requirements, flexible or evolving schema, key-value/document access patterns |
 | **Capacity model** | Instance-sized, provisioned | Provisioned or fully on-demand, scaling automatically with traffic |
 
-This isn't a full DynamoDB deep dive — just enough of a decision framework to correctly redirect a workload that doesn't actually fit the relational model this page is centered on.
+This is just enough of a decision framework to correctly redirect a workload that doesn't fit the relational model this page is centered on — the [next page](09-dynamodb-deep-dive.md) is the full DynamoDB treatment, including how to defend this choice under follow-up questioning.
 
 ## Real-world examples
 

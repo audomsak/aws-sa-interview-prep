@@ -12,13 +12,15 @@ Every page today is built around giving you that second kind of answer, not the 
 
 ```mermaid
 graph TD
-    VPC["VPC networking<br/>deep dive"] --> IAM["IAM & identity<br/>architecture"]
+    VPC["VPC networking<br/>deep dive"] --> EDGE["Edge & traffic layer<br/>(ELB, Route 53, CloudFront)"]
+    EDGE --> IAM["IAM & identity<br/>architecture"]
     IAM --> EC2["EC2 & compute<br/>purchasing options"]
     EC2 --> CONT["Containers on AWS<br/>(ECS vs EKS vs Fargate)"]
     CONT --> LAMBDA["Lambda &<br/>serverless architecture"]
     LAMBDA --> S3["S3 deep dive"]
     S3 --> RDS["RDS/Aurora &<br/>database architecture"]
-    RDS --> WAF["Well-Architected Framework<br/>(all 6 pillars)"]
+    RDS --> DDB["DynamoDB deep dive &<br/>SQL vs NoSQL"]
+    DDB --> WAF["Well-Architected Framework<br/>(all 6 pillars)"]
     WAF --> HA["High availability &<br/>multi-region/DR design"]
     HA --> MIG["The 6 R's<br/>of migration"]
     MIG --> COST["Cost optimization<br/>strategies"]
@@ -32,18 +34,22 @@ Today climbs from **the networking and identity foundation everything else sits 
 | # | Page | Approx. time |
 |---|---|---|
 | 1 | [VPC networking deep dive](01-vpc-networking-deep-dive.md) | 60 min |
-| 2 | [IAM & identity architecture](02-iam-identity-architecture.md) | 55 min |
-| 3 | [EC2 & compute purchasing options](03-ec2-compute-purchasing-options.md) | 45 min |
-| 4 | [Containers on AWS — ECS vs EKS vs Fargate](04-containers-on-aws.md) | 50 min |
-| 5 | [Lambda & serverless architecture](05-lambda-serverless-architecture.md) | 45 min |
-| 6 | [S3 deep dive](06-s3-deep-dive.md) | 45 min |
-| 7 | [RDS/Aurora & database architecture](07-rds-aurora-database-architecture.md) | 45 min |
-| 8 | [The Well-Architected Framework, all 6 pillars](08-well-architected-framework.md) | 55 min |
-| 9 | [High availability & multi-region/DR design](09-ha-multi-region-dr.md) | 50 min |
-| 10 | [The 6 R's of migration](10-six-rs-migration.md) | 40 min |
-| 11 | [Cost optimization strategies](11-cost-optimization.md) | 40 min |
-| 12 | [Shared Responsibility Model & security architecture](12-shared-responsibility-security.md) | 40 min |
-| 13 | [Interview Q&A drill](13-interview-qa.md) | 70 min, done cold, last |
+| 2 | [Edge & traffic layer — ELB, Route 53, CloudFront](02-edge-traffic-layer.md) | 45 min |
+| 3 | [IAM & identity architecture](03-iam-identity-architecture.md) | 55 min |
+| 4 | [EC2 & compute purchasing options](04-ec2-compute-purchasing-options.md) | 45 min |
+| 5 | [Containers on AWS — ECS vs EKS vs Fargate](05-containers-on-aws.md) | 50 min |
+| 6 | [Lambda & serverless architecture](06-lambda-serverless-architecture.md) | 45 min |
+| 7 | [S3 deep dive](07-s3-deep-dive.md) | 45 min |
+| 8 | [RDS/Aurora & database architecture](08-rds-aurora-database-architecture.md) | 45 min |
+| 9 | [DynamoDB deep dive & SQL vs NoSQL](09-dynamodb-deep-dive.md) | 45 min |
+| 10 | [The Well-Architected Framework, all 6 pillars](10-well-architected-framework.md) | 55 min |
+| 11 | [High availability & multi-region/DR design](11-ha-multi-region-dr.md) | 50 min |
+| 12 | [The 6 R's of migration](12-six-rs-migration.md) | 40 min |
+| 13 | [Cost optimization strategies](13-cost-optimization.md) | 40 min |
+| 14 | [Shared Responsibility Model & security architecture](14-shared-responsibility-security.md) | 40 min |
+| 15 | [Interview Q&A drill](15-interview-qa.md) | 70 min, done cold, last |
+
+Today is the fullest day of the week — if it runs long, the edge/traffic, DynamoDB, and 6 R's pages are the ones that most safely flex into the hour-10 buffer: the first leans heavily on load-balancing knowledge you already use daily at Kong, and the other two are each anchored by a single decision framework rather than layered mechanics.
 
 ## Real-world anchor for today
 

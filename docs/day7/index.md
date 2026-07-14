@@ -2,7 +2,7 @@
 
 ## Why this day matters
 
-This is the last day, and it closes two loops at once. First: DevOps/DevSecOps questions are where interviewers test whether you understand *why* a practice exists, not just its name — research was unusually blunt about this: "Kubernetes orchestrates containers" isn't a useful answer; "Kubernetes is overkill for a 3-service startup and I'd use ECS instead" is. Second: this whole week has been organized as seven separate days, but a real interview won't respect those boundaries — a single scenario question can easily need Day 1's containers, Day 4's messaging, and Day 6's AWS architecture all at once. Today's final page is built specifically to force that cross-topic integration before the real interview does it for you, live.
+This is the last day, and it closes two loops at once. First: DevOps/DevSecOps questions are where interviewers test whether you understand *why* a practice exists, not just its name — research was unusually blunt about this: "Kubernetes orchestrates containers" isn't a useful answer; "Kubernetes is overkill for a 3-service startup and I'd use ECS instead" is. Second: this whole week has been organized as seven separate days, but a real interview won't respect those boundaries — a single scenario question can easily need Day 1's containers, Day 4's messaging, and Day 6's AWS architecture all at once. Today's two closing pages — four rehearsed system-design scenario shapes, then a full cross-topic mock — are built specifically to force that integration before the real interview does it for you, live.
 
 ## The mental model for the whole day
 
@@ -17,7 +17,8 @@ graph TD
     OBS --> SLO["SLI/SLO &<br/>SRE fundamentals"]
     SLO --> SEC["DevSecOps —<br/>shift-left security pipeline"]
     SEC --> DEPLOY["Safe deployment patterns"]
-    DEPLOY --> REVIEW["Full 7-day cross-topic<br/>mock interview & review"]
+    DEPLOY --> SCEN["System-design scenario practice<br/>(four full walkthroughs)"]
+    SCEN --> REVIEW["Full 7-day cross-topic<br/>mock interview & review"]
 ```
 
 Today climbs from **how code and infrastructure changes actually flow through a team** (branching, CI/CD, GitOps, IaC), through **the operational disciplines that keep a deployed system healthy** (observability, SLOs, security), into **the patterns that make deployment itself safe**, and closes with **the whole week, deliberately mixed together**.
@@ -36,7 +37,10 @@ Today climbs from **how code and infrastructure changes actually flow through a 
 | 8 | [SLI/SLO & SRE fundamentals](08-sli-slo-sre-fundamentals.md) | 45 min |
 | 9 | [DevSecOps — shift-left security pipeline](09-devsecops-shift-left-security.md) | 50 min |
 | 10 | [Safe deployment patterns](10-safe-deployment-patterns.md) | 45 min |
-| 11 | [Full 7-day cross-topic mock interview & review](11-full-mock-interview-review.md) | 90 min, the capstone |
+| 11 | [System-design scenario practice — four full walkthroughs](11-system-design-scenarios.md) | 75 min, done out loud |
+| 12 | [Full 7-day cross-topic mock interview & review](12-full-mock-interview-review.md) | 90 min, the capstone |
+
+The two closing pages are the day's real workload — if the technical pages run long, compress them rather than the scenarios and mock, which only work done cold and out loud.
 
 ## Real-world anchor for today
 

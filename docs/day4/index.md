@@ -21,9 +21,10 @@ graph TD
     OB --> SAGA["The Saga pattern,<br/>full treatment"]
     SAGA --> CHOR["Choreography vs Orchestration<br/>(the decision framework)"]
     CHOR --> ES["Event Sourcing vs CDC"]
+    ES --> AWS["AWS-native messaging<br/>(SQS, SNS, EventBridge, Kinesis, MSK)"]
 ```
 
-Today climbs from **Kafka's own internals**, out through **its operational extensions** (streaming, geo-replication), across to **where it sits relative to traditional MQ brokers**, into **reliability patterns** (DLQ), down into **the mechanism that actually implements reliable cross-service data propagation** (CDC → Outbox), and up into **the two biggest distributed-transaction patterns** (Saga, and the choreography/orchestration decision that governs it).
+Today climbs from **Kafka's own internals**, out through **its operational extensions** (streaming, geo-replication), across to **where it sits relative to traditional MQ brokers**, into **reliability patterns** (DLQ), down into **the mechanism that actually implements reliable cross-service data propagation** (CDC → Outbox), and up into **the two biggest distributed-transaction patterns** (Saga, and the choreography/orchestration decision that governs it) — then closes by **mapping every one of those semantics onto the AWS-native services** (SQS, SNS, EventBridge, Kinesis, MSK) the interviewing employer will actually expect you to reach for.
 
 ## Today's pages (10-hour day)
 
@@ -39,7 +40,10 @@ Today climbs from **Kafka's own internals**, out through **its operational exten
 | 8 | [The Saga pattern, full treatment](08-saga-pattern-full-treatment.md) | 70 min |
 | 9 | [Choreography vs Orchestration — the decision framework](09-choreography-vs-orchestration.md) | 45 min |
 | 10 | [Event Sourcing vs CDC](10-event-sourcing-vs-cdc.md) | 35 min |
-| 11 | [Interview Q&A drill](11-interview-qa.md) | 70 min, done cold, last |
+| 11 | [AWS-native messaging — SQS, SNS, EventBridge, Kinesis, MSK](11-aws-native-messaging.md) | 45 min |
+| 12 | [Interview Q&A drill](12-interview-qa.md) | 70 min, done cold, last |
+
+The AWS mapping page is deliberately lighter than its slot suggests — it introduces almost no new mechanics, only new names for semantics the earlier pages already built, so it can flex into the hour-10 buffer if the day runs long.
 
 ## Real-world anchor for today
 

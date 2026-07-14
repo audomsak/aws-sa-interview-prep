@@ -47,6 +47,10 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - "Day 0 — Interview craft":
+      - Overview: day0/index.md
+      - "1. How to answer — technique for follow-up-chain interviews": day0/01-how-to-answer.md
+      - "2. Amazon Leadership Principles & your story bank": day0/02-leadership-principles.md
   - "Day 1 — Linux, Containers, Kubernetes & OpenShift":
       - Overview: day1/index.md
       - "1. Linux networking fundamentals": day1/01-linux-networking.md
@@ -101,7 +105,8 @@ nav:
       - "8. The Saga pattern, full treatment": day4/08-saga-pattern-full-treatment.md
       - "9. Choreography vs Orchestration": day4/09-choreography-vs-orchestration.md
       - "10. Event Sourcing vs CDC": day4/10-event-sourcing-vs-cdc.md
-      - "11. Interview Q&A drill": day4/11-interview-qa.md
+      - "11. AWS-native messaging — SQS, SNS, EventBridge, Kinesis, MSK": day4/11-aws-native-messaging.md
+      - "12. Interview Q&A drill": day4/12-interview-qa.md
   - "Day 5 — Microservices & Distributed Systems Resilience":
       - Overview: day5/index.md
       - "1. CAP theorem & data consistency patterns": day5/01-cap-theorem-data-consistency.md
@@ -119,18 +124,20 @@ nav:
   - "Day 6 — AWS Core Architecture for Solutions Architects":
       - Overview: day6/index.md
       - "1. VPC networking deep dive": day6/01-vpc-networking-deep-dive.md
-      - "2. IAM & identity architecture": day6/02-iam-identity-architecture.md
-      - "3. EC2 & compute purchasing options": day6/03-ec2-compute-purchasing-options.md
-      - "4. Containers on AWS — ECS vs EKS vs Fargate": day6/04-containers-on-aws.md
-      - "5. Lambda & serverless architecture": day6/05-lambda-serverless-architecture.md
-      - "6. S3 deep dive": day6/06-s3-deep-dive.md
-      - "7. RDS/Aurora & database architecture": day6/07-rds-aurora-database-architecture.md
-      - "8. Well-Architected Framework, all 6 pillars": day6/08-well-architected-framework.md
-      - "9. High availability & multi-region/DR design": day6/09-ha-multi-region-dr.md
-      - "10. The 6 R's of migration": day6/10-six-rs-migration.md
-      - "11. Cost optimization strategies": day6/11-cost-optimization.md
-      - "12. Shared Responsibility Model & security": day6/12-shared-responsibility-security.md
-      - "13. Interview Q&A drill": day6/13-interview-qa.md
+      - "2. Edge & traffic layer — ELB, Route 53, CloudFront": day6/02-edge-traffic-layer.md
+      - "3. IAM & identity architecture": day6/03-iam-identity-architecture.md
+      - "4. EC2 & compute purchasing options": day6/04-ec2-compute-purchasing-options.md
+      - "5. Containers on AWS — ECS vs EKS vs Fargate": day6/05-containers-on-aws.md
+      - "6. Lambda & serverless architecture": day6/06-lambda-serverless-architecture.md
+      - "7. S3 deep dive": day6/07-s3-deep-dive.md
+      - "8. RDS/Aurora & database architecture": day6/08-rds-aurora-database-architecture.md
+      - "9. DynamoDB deep dive & SQL vs NoSQL": day6/09-dynamodb-deep-dive.md
+      - "10. Well-Architected Framework, all 6 pillars": day6/10-well-architected-framework.md
+      - "11. High availability & multi-region/DR design": day6/11-ha-multi-region-dr.md
+      - "12. The 6 R's of migration": day6/12-six-rs-migration.md
+      - "13. Cost optimization strategies": day6/13-cost-optimization.md
+      - "14. Shared Responsibility Model & security": day6/14-shared-responsibility-security.md
+      - "15. Interview Q&A drill": day6/15-interview-qa.md
   - "Day 7 — DevOps/DevSecOps & Full Review":
       - Overview: day7/index.md
       - "1. Repository & branching workflow strategies": day7/01-repo-branching-workflow-strategies.md
@@ -143,4 +150,14 @@ nav:
       - "8. SLI/SLO & SRE fundamentals": day7/08-sli-slo-sre-fundamentals.md
       - "9. DevSecOps — shift-left security pipeline": day7/09-devsecops-shift-left-security.md
       - "10. Safe deployment patterns": day7/10-safe-deployment-patterns.md
-      - "11. Full 7-day cross-topic mock interview & review": day7/11-full-mock-interview-review.md
+      - "11. System-design scenario practice — four walkthroughs": day7/11-system-design-scenarios.md
+      - "12. Full 7-day cross-topic mock interview & review": day7/12-full-mock-interview-review.md
+  - "Hook cheat sheets":
+      - Overview: cheatsheets/index.md
+      - "Day 1 hooks": cheatsheets/day1.md
+      - "Day 2 hooks": cheatsheets/day2.md
+      - "Day 3 hooks": cheatsheets/day3.md
+      - "Day 4 hooks": cheatsheets/day4.md
+      - "Day 5 hooks": cheatsheets/day5.md
+      - "Day 6 hooks": cheatsheets/day6.md
+      - "Day 7 hooks": cheatsheets/day7.md
